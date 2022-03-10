@@ -199,3 +199,23 @@ function signIn(db, username, password) {
     }
     return false;
 }
+
+/**
+ * b. The products array has three elements and each of them has six properties.
+ * a. Create a function called ***rateProduct*** which rates the product
+ * b. Create a function called ***averageRating*** which calculate the 
+ * average rating of a product
+ */
+
+rateProduct(products, 'Martha', 'hedfcg', 5)
+
+function rateProduct(db, username, productID, rate) {
+    // 
+    return db.some(({ _id }, index) => {
+        const result = _id === productID;
+        if (result) {
+            db[index].ratings.push({ userId: username, rate });
+        }
+        return result;
+    });
+}
