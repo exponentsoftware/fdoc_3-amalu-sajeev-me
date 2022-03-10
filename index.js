@@ -219,3 +219,21 @@ function rateProduct(db, username, productID, rate) {
         return result;
     });
 }
+
+console.log(averageRating(products, "eedfcf"));
+
+function averageRating(db, productID) {
+  let average = undefined;
+  db.some(({ _id }, index) => {
+    const result = _id === productID;
+    const { ratings } = db[index];
+    if (result)
+      average =
+        ratings.reduce(({ rate: curr }, { rate: accum }) => curr + accum) /
+        ratings.length;
+    return result;
+  });
+  return average;
+}
+
+
